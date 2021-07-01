@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <br />
+      <br />
+      <div class="text-center">
+        <h2>DATA MAHASISWA</h2>
+      </div>
+      <br />
+      <a href="/form" class="btn btn-success">Tambah Mahasiswa</a>
+      <br>
+      <br>
+      <div th:if="@{not #lists.isEmpty(mahasiswa)}">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>NIM</th>
+                <th>Nama</th>
+                <th>Jurusan</th>
+                <th>Angkatan</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="mahasiswa : ${mahasiswa}">
+                <td th:text="${mahasiswa.nim}"></td>
+                <td th:text="${mahasiswa.nama}"></td>
+                <td th:text="${mahasiswa.jurusan}"></td>
+                <td th:text="${mahasiswa.angkatan}"></td>
+                <td>
+                  <a th:href="${'/edit/' + mahasiswa.nim}" class="btn btn-primary">Edit</a>
+                  <a th:href="${'/hapus/' + mahasiswa.nim}" class="btn btn-danger">Hapus</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <br />
+        <br />
+      </div>
+    </div>
+  </body>
+</html>
